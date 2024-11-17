@@ -1,4 +1,11 @@
-package hashingAndDocumentation;
+/**
+* SongRecord.java
+* @author Andres Garcia
+* @since 11-12-2024
+* This class declares and defines the SongRecord object
+*/
+
+//package hashingAndDocumentation;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Objects;
@@ -48,7 +55,12 @@ public class SongRecord {
         this.tempo = 0.0;
     }
 
-    // Constructor that takes a CSV string and parses it
+    /**
+     * Constructor that takes a CSV string and parses it
+     * Preconditions: Strings' parsed values must be in same order of fields
+     * Postconditions: SongRecord has its fields updated
+     * @param data The CSV string being taken in and parsed
+    */
     public SongRecord(String data) {
         String[] fields = data.split(","); // Assuming comma-separated values
         
@@ -80,7 +92,11 @@ public class SongRecord {
         
     }
 
-    // Getters and setters for each field
+    /**
+     * Getters and setters for each field
+     * Preconditions: Fields are declared for setters and initialized for getters
+     * Postconditions: Fields are returned or updated
+    */
     public double getValence() { return valence; }
     public void setValence(double valence) { this.valence = valence; }
 
@@ -138,7 +154,12 @@ public class SongRecord {
     public double getTempo() { return tempo; }
     public void setTempo(double tempo) { this.tempo = tempo; }
 
-    // toString method
+
+    /**
+     * toString method
+     * Preconditions: Each field is initialized
+     * Postconditions: Every field's values or printed out
+    */
     @Override
     public String toString() {
         return "SongRecord{" +
@@ -164,7 +185,11 @@ public class SongRecord {
                 '}';
     }
 
-    // equals method
+    /**
+     * equals method
+     * Preconditions: Each object must have fields to compare
+     * Postconditions: Returns true or false if both objects does or doesn't contain the same data
+    */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -191,6 +216,11 @@ public class SongRecord {
                 Double.compare(that.tempo, tempo) == 0;
     }
 
+    /**
+     * Hashes the object's fields
+     * Preconditions: All fields are initialized
+     * Postconditions: Object's fields are hashed
+    */
     @Override
     public int hashCode() {
         return Objects.hash(valence, year, acousticness, artists, danceability, durationMs, energy, explicit, id,

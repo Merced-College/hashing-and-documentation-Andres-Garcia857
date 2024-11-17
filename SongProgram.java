@@ -1,4 +1,11 @@
-package hashingAndDocumentation;
+/**
+* SongProgram.java
+* @author Andres Garcia
+* @since 11-12-2024
+* This class reads from a SongRecord hashmap with and without a GUI
+*/
+
+//package hashingAndDocumentation;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,10 +14,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.HashMap;
 
 public class SongProgram {
 
@@ -22,7 +25,12 @@ public class SongProgram {
         songMap = new HashMap<>();
     }
 
-    // Method to load songs from a CSV file
+    /**
+     * Method to load songs from a CSV file
+     * Preconditions: Must have an existing CSV file to read
+     * Postconditions: Reads in the given CSV file
+     * @param filePath Name of file
+    */
     public void loadSongsFromCSV(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -43,19 +51,32 @@ public class SongProgram {
         }
     }
 
-    // Method to retrieve a SongRecord by ID
+    /**
+     * Method to retrieve a SongRecord from hashmap with its ID
+     * Preconditions: SongRecords must exist within the hashmap
+     * Postconditions: The SongRecord object with the given ID is returned
+     * @param id The ID of the requested SongRecord
+    */
     public SongRecord getSongById(String id) {
         return songMap.get(id);
     }
 
-    // Method to print all songs (for debugging or display purposes)
+    /**
+     * Method to print all songs (for debugging or display purposes)
+     * Preconditions: songMap must have a list of SongRecord objects
+     * Postconditions: The name of every song in songMap is printed out
+    */
     public void printAllSongs() {
         for (SongRecord song : songMap.values()) {
             System.out.println(song);
         }
     }
     
-    // GUI method to search for a song by ID
+    /**
+     * GUI method to search for a song by ID
+     * Preconditions: GUI must be enabled on the device this program runs on
+     * Postconditions: The requested song is returned within a GUI
+    */
     public void openSearchGui() {
         // Create the main frame
         JFrame frame = new JFrame("Song Lookup");
@@ -101,7 +122,11 @@ public class SongProgram {
         frame.setVisible(true);
     }
 
-    // Main method to demonstrate functionality and open GUI
+    /**
+     * Main method to demonstrate functionality and open GUI
+     * Preconditions: GUI must be enabled on the device this program runs on
+     * Postconditions: Uses GUI format to search for SongRecords
+    */
     public static void main2(String[] args) {
         SongProgram program = new SongProgram();
 
@@ -113,7 +138,11 @@ public class SongProgram {
         program.openSearchGui();
     }
 
-    // Main method to demonstrate functionality
+    /**
+     * Main method to demonstrate functionality
+     * Preconditions: Requires CSV file to load songs from
+     * Postconditions: Uses ID to find a song in songMap
+    */
     public static void main(String[] args) {
         SongProgram program = new SongProgram();
 
@@ -131,7 +160,7 @@ public class SongProgram {
         }
 
         // Print all songs
-        program.printAllSongs();
+        //program.printAllSongs();
     }
 }
 
